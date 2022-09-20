@@ -79,6 +79,7 @@ function main(){
     
 
     function render(){
+    setTimeout(function(){
     gl.clearColor(1.0, 0.75, 0.79, 1.0);
                 //red, Green, Blue, Alpha (transparancy)
 
@@ -86,9 +87,11 @@ function main(){
     theta += 0.01;
     gl.uniform1f(uTheta, theta);
     gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
-    }
+    render();
+    }, 1000/10);
     
-    setInterval(render, 1000/60);
+    // setInterval(render, 1000/60);
 
     //(mode, first, count);
 }
+render();}
