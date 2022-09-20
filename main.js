@@ -66,8 +66,15 @@ function main(){
     gl.useProgram(shaderProgram);
 
     //local variables
-
+    var isAnimated = false;
     var theta = 0.0; 
+
+    //local functions
+
+    function onMouseClick (event){
+        isAnimated = !isAnimated;
+    }
+    document.addEventListener("click", onMouseClick);
 
     //All the qualifiers needed by shaders
 
@@ -103,8 +110,11 @@ function main(){
                 //red, Green, Blue, Alpha (transparancy)
 
     gl.clear(gl.COLOR_BUFFER_BIT);
-    theta += 0.01;
-    gl.uniform1f(uTheta, theta);
+    if(isAnimated){
+        theta += 0.01;
+        gl.uniform1f(uTheta, theta);
+    }
+   
     gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
     // render();
     // }, 1000/30);
